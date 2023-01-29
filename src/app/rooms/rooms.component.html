@@ -13,9 +13,25 @@
 <div *ngIf="rooms.availableRooms != undefined &&  rooms.availableRooms > 0">
   Rooms List
   <table>
-    <tr></tr>
+    <tr>
+      <th>Index</th>
+      <th>Even / Odd</th>
+      <th>Room Number</th>
+      <th>Room Type</th>
+      <th>Room Price</th>
+      <th>Room Amenities</th>
+      <th>Checking Time</th>
+    </tr>
+    <tr *ngFor="let room of roomList; let e = even; let o = odd; let i = index;">
+      <td>{{i}}</td>
+      <td>{{e?'EVEN':'ODD'}}</td>
+      <td>{{room.roomNumber}}</td>
+      <td>{{room.roomType}}</td>
+      <td>{{room.price}}</td>
+      <td>{{room.amenities}}</td>
+      <td>{{room.checkinTime.toLocaleString()}}</td>
+    </tr>
   </table>
-  {{roomList}}
 </div>
 
 
