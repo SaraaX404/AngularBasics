@@ -1,2 +1,12 @@
 <h1>Hello world</h1>
-<app-rooms></app-rooms>
+<div [ngSwitch]="role">
+  <div *ngSwitchCase="'User'">
+    Welcome User
+  </div>
+  <div *ngSwitchCase="'Admin'">
+    <app-rooms></app-rooms>
+  </div>
+  <div *ngSwitchDefault>
+    You have not access to this page
+  </div>
+</div>
