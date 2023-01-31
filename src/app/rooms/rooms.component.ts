@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Room, RoomList} from "./rooms";
 
 @Component({
@@ -6,7 +6,7 @@ import {Room, RoomList} from "./rooms";
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css']
 })
-export class RoomsComponent {
+export class RoomsComponent implements OnInit{
   hotelName = 'Hilton Hotel'
   hideRooms = false
   numOfRooms = 10
@@ -17,7 +17,10 @@ export class RoomsComponent {
     bookedRooms: 5
   }
 
-  roomList:RoomList[] = [{
+
+  roomList:RoomList[] = []
+  ngOnInit():void {
+  this.roomList = [{
     roomNumber: 1,
     roomType: 'Deluxe Room',
     amenities: 'Air conditioner blah blah blah',
@@ -54,6 +57,9 @@ export class RoomsComponent {
     checkoutTime: new Date('12-Nov-2021'),
     rating: 4.5
   }]
+  }
+
+
 
   toggle(){
     this.hideRooms = !this.hideRooms
