@@ -24,7 +24,8 @@ export class RoomsComponent {
     price:500,
     photos: 'https://th.bing.com/th/id/OIP.GA_AE0fF42zXFxBUhbN0sgHaE8?pid=ImgDet&rs=1',
     checkinTime: new Date('11-Nov-2021'),
-    checkoutTime: new Date('12-Nov-2021')
+    checkoutTime: new Date('12-Nov-2021'),
+    rating: 4.5
   },{
     roomNumber: 2,
     roomType: 'Deluxe Room',
@@ -32,7 +33,8 @@ export class RoomsComponent {
     price:500,
     photos: 'https://th.bing.com/th/id/OIP.GA_AE0fF42zXFxBUhbN0sgHaE8?pid=ImgDet&rs=1',
     checkinTime: new Date('11-Nov-2021'),
-    checkoutTime: new Date('12-Nov-2021')
+    checkoutTime: new Date('12-Nov-2021'),
+    rating: 4.5
   },{
     roomNumber: 3,
     roomType: 'Deluxe Room',
@@ -40,7 +42,8 @@ export class RoomsComponent {
     price:500,
     photos: 'https://th.bing.com/th/id/OIP.GA_AE0fF42zXFxBUhbN0sgHaE8?pid=ImgDet&rs=1',
     checkinTime: new Date('11-Nov-2021'),
-    checkoutTime: new Date('12-Nov-2021')
+    checkoutTime: new Date('12-Nov-2021'),
+    rating: 4.5
   },{
     roomNumber: 4,
     roomType: 'Deluxe Room',
@@ -48,7 +51,8 @@ export class RoomsComponent {
     price:500,
     photos: 'https://th.bing.com/th/id/OIP.GA_AE0fF42zXFxBUhbN0sgHaE8?pid=ImgDet&rs=1',
     checkinTime: new Date('11-Nov-2021'),
-    checkoutTime: new Date('12-Nov-2021')
+    checkoutTime: new Date('12-Nov-2021'),
+    rating: 4.5
   }]
 
   toggle(){
