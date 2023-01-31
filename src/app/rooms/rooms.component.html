@@ -20,12 +20,12 @@
       <th>Checking Time</th>
     </tr>
     <tr [ngClass]="e ? 'even': 'odd'"  *ngFor="let room of roomList; let e = even; let o = odd; let i = index;">
-      <td>{{i}}</td>
+      <td>{{i/10 | percent }}</td>
       <td>{{e?'EVEN':'ODD'}}</td>
       <td>{{room.roomNumber}}</td>
       <td>{{room.roomType}}</td>
-      <td>{{room.price}}</td>
-      <td>{{room.amenities}}</td>
+      <td>{{room.price | currency : 'EUR'}}</td>
+      <td>{{room.amenities | lowercase}}</td>
       <td>{{room.checkinTime | date : 'shortDate'}}</td>
     </tr>
   </table>
