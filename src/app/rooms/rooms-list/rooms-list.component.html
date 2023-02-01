@@ -1,6 +1,7 @@
 <table class="table table-striped">
   <thead>
   <tr>
+
     <th scope="col">Index</th>
     <th scope="col">Even / Odd</th>
     <th scope="col">Room Number</th>
@@ -9,6 +10,7 @@
     <th scope="col">Room Amenities</th>
     <th scope="col">Checking Time</th>
     <th scope="col">Rating</th>
+    <th scope="col"> Select Room </th>
   </tr>
   </thead>
 
@@ -22,6 +24,7 @@
     <td>{{room.amenities | lowercase}}</td>
     <td>{{room.checkinTime | date : 'shortDate'}}</td>
     <td>{{room.rating | number : '1.5-10' : 'en-us'}}</td>
+    <td><button class="btn-primary" (click)="selectRoom(room)" >Select Room</button></td>
   </tr>
   </tbody>
 
