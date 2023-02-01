@@ -7,34 +7,7 @@
 </div>
 <div *ngIf="rooms.availableRooms != undefined &&  rooms.availableRooms > 0">
   Rooms List
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th scope="col">Index</th>
-      <th scope="col">Even / Odd</th>
-      <th scope="col">Room Number</th>
-      <th scope="col">Room Type</th>
-      <th scope="col">Room Price</th>
-      <th scope="col">Room Amenities</th>
-      <th scope="col">Checking Time</th>
-      <th scope="col">Rating</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <tr  *ngFor="let room of roomList | slice : 0:5; let e = even; let o = odd; let i = index;">
-      <td>{{i/10 | percent }}</td>
-      <td>{{e?'EVEN':'ODD'}}</td>
-      <td>{{room.roomNumber}}</td>
-      <td>{{room.roomType}}</td>
-      <td>{{room.price | currency : 'EUR'}}</td>
-      <td>{{room.amenities | lowercase}}</td>
-      <td>{{room.checkinTime | date : 'shortDate'}}</td>
-      <td>{{room.rating | number : '1.5-10' : 'en-us'}}</td>
-    </tr>
-    </tbody>
-
-  </table>
+  <app-rooms-list [roomList]="roomList" ></app-rooms-list>
 </div>
 
 
