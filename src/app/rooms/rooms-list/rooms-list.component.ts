@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output,SimpleChanges} from '@angular/core';
 import {RoomList} from "../rooms";
 
 @Component({
@@ -7,11 +7,21 @@ import {RoomList} from "../rooms";
   styleUrls: ['./rooms-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RoomsListComponent {
+export class RoomsListComponent implements OnChanges{
   @Input() roomList:RoomList[] = []
+
+  @Input() title:string = ""
+
 
   @Output() roomSelected = new EventEmitter<RoomList>();
 
+  ngOnChanges(changes: SimpleChanges):void {
+    console.log(changes)
+
+      if(changes['title']){
+        this.title = changes['title'].currentValue.toUpperCase()
+      }
+  }
 
   selectRoom(room:RoomList){
     this.roomSelected.emit(room)

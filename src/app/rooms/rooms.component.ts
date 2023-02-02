@@ -17,6 +17,8 @@ export class RoomsComponent implements OnInit{
     bookedRooms: 5
   }
 
+  title = 'Rooms List'
+
 
   roomList:RoomList[] = []
   ngOnInit():void {
@@ -81,7 +83,10 @@ export class RoomsComponent implements OnInit{
     this.roomList = [...this.roomList, room]
   }
 
+
+
   toggle(){
     this.hideRooms = !this.hideRooms
+    this.title = "room list"
   }
 }
