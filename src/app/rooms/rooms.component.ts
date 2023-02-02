@@ -59,11 +59,27 @@ export class RoomsComponent implements OnInit{
   }]
   }
 
+  selectedRoom:RoomList[] = []
+
   selectRoom(room:RoomList){
-    console.log(room)
+   this.selectedRoom[0] = room
   }
 
+  addRoom(){
+    const room:RoomList = {
+      roomNumber: 5,
+      roomType: 'Deluxe Room',
+      amenities: 'Air conditioner blah blah blah',
+      price:500,
+      photos: 'https://th.bing.com/th/id/OIP.GA_AE0fF42zXFxBUhbN0sgHaE8?pid=ImgDet&rs=1',
+      checkinTime: new Date('11-Nov-2021'),
+      checkoutTime: new Date('12-Nov-2021'),
+      rating: 4.5
+    };
 
+
+    this.roomList = [...this.roomList, room]
+  }
 
   toggle(){
     this.hideRooms = !this.hideRooms

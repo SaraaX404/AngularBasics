@@ -15,7 +15,7 @@
   </thead>
 
   <tbody>
-  <tr  *ngFor="let room of roomList | slice : 0:5; let e = even; let o = odd; let i = index;">
+  <tr  *ngFor="let room of roomList | slice : 0:10; let e = even; let o = odd; let i = index;">
     <td>{{i/10 | percent }}</td>
     <td>{{e?'EVEN':'ODD'}}</td>
     <td>{{room.roomNumber}}</td>
