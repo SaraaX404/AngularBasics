@@ -64,7 +64,7 @@ export class RoomsComponent implements OnInit{
   selectedRoom:RoomList[] = []
 
   selectRoom(room:RoomList){
-   this.selectedRoom[0] = room
+   this.selectedRoom = [room]
   }
 
   addRoom(){

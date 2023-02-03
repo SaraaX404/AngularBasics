@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output,SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, DoCheck ,OnChanges, Output,SimpleChanges} from '@angular/core';
 import {RoomList} from "../rooms";
 
 @Component({
@@ -7,7 +7,7 @@ import {RoomList} from "../rooms";
   styleUrls: ['./rooms-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RoomsListComponent implements OnChanges{
+export class RoomsListComponent implements OnChanges, DoCheck{
   @Input() roomList:RoomList[] = []
 
   @Input() title:string = ""
@@ -21,6 +21,10 @@ export class RoomsListComponent implements OnChanges{
       if(changes['title']){
         this.title = changes['title'].currentValue.toUpperCase()
       }
+  }
+
+  ngDoCheck() {
+console.log("Checking")
   }
 
   selectRoom(room:RoomList){
