@@ -1,6 +1,6 @@
 <p>rooms works!</p>
-<h1>Welcome to  {{hotelName}}</h1>
-
+<!--<h1>Welcome to  {{hotelName}}</h1>-->
+<app-header></app-header>
 <div [hidden]="hideRooms" >
   <h4>Number of rooms:</h4>
     <div [ngStyle]="{'color':rooms.availableRooms ? 'steelblue' : 'red'}"  [innerText]="numOfRooms" ></div>

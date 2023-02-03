@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Room, RoomList} from "./rooms";
+import {HeaderComponent} from "../header/header.component";
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css']
 })
-export class RoomsComponent implements OnInit{
+export class RoomsComponent implements OnInit, AfterViewInit{
   hotelName = 'Hilton Hotel'
   hideRooms = false
   numOfRooms = 10
@@ -16,12 +17,19 @@ export class RoomsComponent implements OnInit{
     availableRooms: 10,
     bookedRooms: 5
   }
+/*if header component has any async code, if trying to access headerComponent on ngOnInit it may cause delay, therefore
+* you can make it default(false) if there is any async code in header, it is not, that will be ok.
+* */
+  @ViewChild(HeaderComponent, {static:true}) headerComponent!: HeaderComponent;
 
   title = 'Rooms List'
 
 
   roomList:RoomList[] = []
   ngOnInit():void {
+
+    console.log(this.headerComponent)
+
   this.roomList = [{
     roomNumber: 1,
     roomType: 'Deluxe Room',
@@ -65,6 +73,11 @@ export class RoomsComponent implements OnInit{
 
   selectRoom(room:RoomList){
    this.selectedRoom = [room]
+  }
+
+  ngAfterViewInit() {
+    console.log(this.headerComponent)
+    this.headerComponent.title = "Saraa X Magic"
   }
 
   addRoom(){
