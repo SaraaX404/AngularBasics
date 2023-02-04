@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {Room, RoomList} from "./rooms";
 import {HeaderComponent} from "../header/header.component";
 
@@ -7,7 +7,7 @@ import {HeaderComponent} from "../header/header.component";
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css']
 })
-export class RoomsComponent implements OnInit, AfterViewInit{
+export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked{
   hotelName = 'Hilton Hotel'
   hideRooms = false
   numOfRooms = 10
@@ -21,6 +21,9 @@ export class RoomsComponent implements OnInit, AfterViewInit{
 * you can make it default(false) if there is any async code in header, it is not, that will be ok.
 * */
   @ViewChild(HeaderComponent, {static:true}) headerComponent!: HeaderComponent;
+
+  @ViewChildren(HeaderComponent) headerChildren!: QueryList<HeaderComponent>;
+
 
   title = 'Rooms List'
 
@@ -78,6 +81,8 @@ export class RoomsComponent implements OnInit, AfterViewInit{
   ngAfterViewInit() {
     console.log(this.headerComponent)
     this.headerComponent.title = "Saraa X Magic"
+
+    this.headerChildren.last.title = "Last Title"
   }
 
   addRoom(){
@@ -96,6 +101,9 @@ export class RoomsComponent implements OnInit, AfterViewInit{
     this.roomList = [...this.roomList, room]
   }
 
+  ngAfterViewChecked() {
+    this.headerComponent.title = "Saraa X Second Magic"
+  }
 
 
   toggle(){
