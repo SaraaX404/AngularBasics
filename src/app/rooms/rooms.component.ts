@@ -1,6 +1,7 @@
 import {AfterViewChecked, AfterViewInit, Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {Room, RoomList} from "./rooms";
 import {HeaderComponent} from "../header/header.component";
+import {RoomsService} from "./services/rooms.service";
 
 @Component({
   selector: 'app-rooms',
@@ -9,13 +10,16 @@ import {HeaderComponent} from "../header/header.component";
 })
 export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked{
   hotelName = 'Hilton Hotel'
-  hideRooms = false
+  hideRooms = true
   numOfRooms = 10
 
   rooms : Room = {
     totalRooms: 15,
     availableRooms: 10,
     bookedRooms: 5
+  }
+
+  constructor(private roomsService:RoomsService) {
   }
 /*if header component has any async code, if trying to access headerComponent on ngOnInit it may cause delay, therefore
 * you can make it default(false) if there is any async code in header, it is not, that will be ok.
@@ -33,43 +37,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked{
 
     console.log(this.headerComponent)
 
-  this.roomList = [{
-    roomNumber: 1,
-    roomType: 'Deluxe Room',
-    amenities: 'Air conditioner blah blah blah',
-    price:500,
-    photos: 'https://th.bing.com/th/id/OIP.GA_AE0fF42zXFxBUhbN0sgHaE8?pid=ImgDet&rs=1',
-    checkinTime: new Date('11-Nov-2021'),
-    checkoutTime: new Date('12-Nov-2021'),
-    rating: 4.5
-  },{
-    roomNumber: 2,
-    roomType: 'Deluxe Room',
-    amenities: 'Air conditioner blah blah blah',
-    price:500,
-    photos: 'https://th.bing.com/th/id/OIP.GA_AE0fF42zXFxBUhbN0sgHaE8?pid=ImgDet&rs=1',
-    checkinTime: new Date('11-Nov-2021'),
-    checkoutTime: new Date('12-Nov-2021'),
-    rating: 4.5
-  },{
-    roomNumber: 3,
-    roomType: 'Deluxe Room',
-    amenities: 'Air conditioner blah blah blah',
-    price:500,
-    photos: 'https://th.bing.com/th/id/OIP.GA_AE0fF42zXFxBUhbN0sgHaE8?pid=ImgDet&rs=1',
-    checkinTime: new Date('11-Nov-2021'),
-    checkoutTime: new Date('12-Nov-2021'),
-    rating: 4.5
-  },{
-    roomNumber: 4,
-    roomType: 'Deluxe Room',
-    amenities: 'Air conditioner blah blah blah',
-    price:500,
-    photos: 'https://th.bing.com/th/id/OIP.GA_AE0fF42zXFxBUhbN0sgHaE8?pid=ImgDet&rs=1',
-    checkinTime: new Date('11-Nov-2021'),
-    checkoutTime: new Date('12-Nov-2021'),
-    rating: 4.5
-  }]
+  this.roomList = this.roomsService.getRooms()
   }
 
   selectedRoom:RoomList[] = []

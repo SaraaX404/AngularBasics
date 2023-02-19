@@ -1,4 +1,14 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, DoCheck ,OnChanges, Output,SimpleChanges} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  DoCheck,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  OnDestroy
+} from '@angular/core';
 import {RoomList} from "../rooms";
 
 @Component({
@@ -7,7 +17,7 @@ import {RoomList} from "../rooms";
   styleUrls: ['./rooms-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RoomsListComponent implements OnChanges, DoCheck{
+export class RoomsListComponent implements OnChanges, DoCheck, OnDestroy{
   @Input() roomList:RoomList[] = []
 
   @Input() title:string = ""
@@ -29,6 +39,14 @@ console.log("Checking")
 
   selectRoom(room:RoomList){
     this.roomSelected.emit(room)
+  }
+
+  destroyed = "No this is not removed"
+
+  ngOnDestroy() {
+    console.log("Destroyed")
+    this.destroyed = "this is removed"
+
   }
 
 }

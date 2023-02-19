@@ -9,14 +9,17 @@
   <h4>Number of rooms:</h4>
     <div [ngStyle]="{'color':rooms.availableRooms ? 'steelblue' : 'red'}"  [innerText]="numOfRooms" ></div>
 </div>
-<div *ngIf="selectedRoom.length > 0">
-  <app-rooms-list [roomList]="selectedRoom"></app-rooms-list>
+<div *ngIf="hideRooms">
+  <div *ngIf="selectedRoom.length > 0">
+    <app-rooms-list [roomList]="selectedRoom"></app-rooms-list>
+  </div>
+  <button (click)="addRoom()">Add Room</button>
+  <div *ngIf="rooms.availableRooms != undefined &&  rooms.availableRooms > 0">
+    Rooms List
+    <app-rooms-list [roomList]="roomList" (roomSelected)="selectRoom($event)" [title]="title"  ></app-rooms-list>
+  </div>
 </div>
-<button (click)="addRoom()">Add Room</button>
-<div *ngIf="rooms.availableRooms != undefined &&  rooms.availableRooms > 0">
-  Rooms List
-  <app-rooms-list [roomList]="roomList" (roomSelected)="selectRoom($event)" [title]="title"  ></app-rooms-list>
-</div>
+
 
 
 <button (click)="toggle()">This is toggle</button>
