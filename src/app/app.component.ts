@@ -1,5 +1,6 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, Optional, ViewChild, ViewContainerRef} from '@angular/core';
 import {RoomsComponent} from "./rooms/rooms.component";
+import {LoggerService} from "./logger.service";
 
 
 
@@ -15,7 +16,8 @@ import {RoomsComponent} from "./rooms/rooms.component";
   styles:[`h1 {color:red;}`]
 })
 export class AppComponent implements OnInit, AfterViewInit{
-
+constructor(@Optional() private loggerService: LoggerService) {
+}
 
  @ViewChild('user', {read: ViewContainerRef}) vcr!: ViewContainerRef;
 
@@ -28,7 +30,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   role = 'Admin';
 
 ngOnInit(){
-  this.name.nativeElement.innerText = "Hello world"
+  this.loggerService?.log('Working fine')
 }
 
 ngAfterViewInit() {
