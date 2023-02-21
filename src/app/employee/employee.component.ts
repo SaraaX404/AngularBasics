@@ -5,10 +5,10 @@ import {RoomsService} from "../rooms/services/rooms.service";
   selector: 'app-employee',
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css'],
-  providers: [RoomsService]
+  // providers: [RoomsService]
 })
 export class EmployeeComponent {
-  constructor(@Self() private roomsService:RoomsService) {
+  constructor(private roomsService:RoomsService) {
 
   }
   empName:string = 'John'

@@ -28,7 +28,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked{
     bookedRooms: 5
   }
 
-  constructor(@SkipSelf() private roomsService:RoomsService) {
+  constructor(private roomsService:RoomsService) {
   }
 /*if header component has any async code, if trying to access headerComponent on ngOnInit it may cause delay, therefore
 * you can make it default(false) if there is any async code in header, it is not, that will be ok.

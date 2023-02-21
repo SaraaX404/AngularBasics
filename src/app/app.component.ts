@@ -1,6 +1,16 @@
-import {AfterViewInit, Component, ElementRef, OnInit, Optional, ViewChild, ViewContainerRef} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  Optional,
+  ViewChild,
+  ViewContainerRef
+} from '@angular/core';
 import {RoomsComponent} from "./rooms/rooms.component";
 import {LoggerService} from "./logger.service";
+import {localstorageToken} from './localstorage.token'
 
 
 
@@ -16,7 +26,8 @@ import {LoggerService} from "./logger.service";
   styles:[`h1 {color:red;}`]
 })
 export class AppComponent implements OnInit, AfterViewInit{
-constructor(@Optional() private loggerService: LoggerService) {
+constructor(@Optional() private loggerService: LoggerService, @Inject(localstorageToken) private localstorage: Storage) {
+
 }
 
  @ViewChild('user', {read: ViewContainerRef}) vcr!: ViewContainerRef;
@@ -31,6 +42,7 @@ constructor(@Optional() private loggerService: LoggerService) {
 
 ngOnInit(){
   this.loggerService?.log('Working fine')
+  localStorage.setItem('name', 'saraa')
 }
 
 ngAfterViewInit() {
