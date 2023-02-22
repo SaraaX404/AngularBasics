@@ -45,9 +45,10 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked{
   ngOnInit():void {
 
     console.log(this.headerComponent)
-
+  this.roomsService.testApi().subscribe((data)=> console.log(data))
   this.roomList = this.roomsService.getRooms()
   }
+
 
   selectedRoom:RoomList[] = []
 
